@@ -1,0 +1,28 @@
+.main__button {
+  background-color: var(--main-orange);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 3rem;
+  padding-left: 4.5rem;
+  padding-right: 4.5rem;
+
+  transition: box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.main__button:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0.9;
+}
+
+.arrow__icon {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.main__button:hover .arrow__icon {
+  transform: translateX(6px);
+}
