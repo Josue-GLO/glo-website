@@ -47,10 +47,12 @@ function Header() {
           <a href="#" className={selectedNavLink === "Programs" ? styles.nav__active : ""} onClick={() => handleNavLinkClick("Programs")}>Programs</a>
           <a href="#" className={selectedNavLink === "Faculty & Universities" ? styles.nav__active : ""} onClick={() => handleNavLinkClick("Faculty & Universities")}>Faculty & Universities</a>
           <a href="#" className={selectedNavLink === "Our Blogs" ? styles.nav__active : ""} onClick={() => handleNavLinkClick("Our Blogs")}>Our Blogs</a>
+          <a href="#">Contact</a>
         </nav>
         <div className={styles.overlay__container} onClick={handleMenuButtonClick}>
           <button onClick={handleMenuButtonClick}><IoIosClose /></button>
         </div>
+        <div className={`${styles.screen__overlay} ${isMenuOpen ? styles.screen__overlay__visible : ""}`}></div>
       </div>
     </>
   )
