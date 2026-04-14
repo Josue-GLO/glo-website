@@ -5,15 +5,15 @@ import { useState } from 'react';
 
 const studentOptions = [
   {name: "Know about GLO", url: ""}, {name: "Know about deadlines/enrollment", url: ""}, 
-  {name: "Discover benefits", url: ""}, {name: "Know about financial planning/scholarships", url: ""}, 
-  {name: "Meet the team", url: ""}, {name: "Read blogs", url: ""}, {name: "Study abroad", url: ""},
+  {name: "Discover benefits", url: ""}, {name: "View funding options/scholarships", url: ""}, 
+  {name: "Meet the team", url: ""}, {name: "Study abroad", url: ""},
   {name: "Discover testimonials", url: ""}, {name: "Know the experience", url: ""}, 
-  {name: "Transfer credits", url: ""}, {name: "Know whats included", url: ""}, {name: "Know why GLO", url: ""}
+  {name: "Transfer credits", url: ""}, {name: "See whats included", url: ""}
 ];
 
 const alumniOptions = [
   {name: "Go abroad again", url: ""}, {name: "Become an ambassador", url: ""}, 
-  {name: "Work with GLO", url: ""}, {name: "Customized programs", url: ""}, 
+  {name: "Work with GLO", url: ""}, {name: "Request a custom program", url: ""}, 
 ];
 
 const parentOptions = [
@@ -22,13 +22,13 @@ const parentOptions = [
 ];
 
 const facultyOptions = [
-  {name: "Work with GLO", url: ""}, {name: "Customized programs", url: ""},
+  {name: "Work with GLO", url: ""}, {name: "Request a custom program", url: ""},
   {name: "Read case studies", url: ""}, {name: "View marketing resources", url: ""}, 
   {name: "View programs structure", url: ""}, {name: "Transfer credits", url: ""}
 ];
 
 function HomeHeroSection() {
-  const [selectedRole, setSelectedRole] = useState("");
+  const [selectedRole, setSelectedRole] = useState("Student");
 
   return (
     <div className={styles.main__container}>
@@ -47,33 +47,23 @@ function HomeHeroSection() {
           <button className={selectedRole === "Faculty/Advisor" ? styles.button__active : ""} onClick={() => selectedRole === "Faculty/Advisor" ? setSelectedRole("") : setSelectedRole("Faculty/Advisor")}>Faculty/Advisor <br />🏫</button>
         </div>
 
-        {selectedRole &&
-          <div className={styles.links__container}>
-            <p>Looking to...</p>
-            <div className={styles.links__list}>
-              {
-                selectedRole === "Student" && studentOptions.map((option, index) => (
-                  <a key={index} href={option.url}>{option.name} <FaArrowRightLong className={styles.arrow__icon} /></a>
-                ))
-              }
-              {
-                selectedRole === "Alumni" && alumniOptions.map((option, index) => (
-                  <a key={index} href={option.url}>{option.name} <FaArrowRightLong className={styles.arrow__icon} /></a>
-                ))
-              }
-              {
-                selectedRole === "Parent" && parentOptions.map((option, index) => (
-                  <a key={index} href={option.url}>{option.name} <FaArrowRightLong className={styles.arrow__icon} /></a>
-                ))
-              }
-              {
-                selectedRole === "Faculty/Advisor" && facultyOptions.map((option, index) => (
-                  <a key={index} href={option.url}>{option.name} <FaArrowRightLong className={styles.arrow__icon} /></a>
-                ))
-              }
-            </div>
+        <div className={styles.links__container}>
+          {selectedRole && (
+            <p key={selectedRole + "-label"} className={styles.label}>
+              Looking to...
+            </p>
+          )}
+          <div className={styles.links__list} key={selectedRole}>
+            {(selectedRole === "Student" ? studentOptions
+              : selectedRole === "Alumni" ? alumniOptions
+              : selectedRole === "Parent" ? parentOptions
+              : selectedRole === "Faculty/Advisor" ? facultyOptions
+              : []
+            ).map((option, index) => (
+              <a key={index} href={option.url} className={styles.link__item} style={{ animationDelay: `${index * 35}ms` }} >{option.name} <FaArrowRightLong className={styles.arrow__icon} /></a>
+            ))}
           </div>
-    }
+        </div>
       </div>
     </div>
   )

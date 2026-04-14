@@ -5,6 +5,8 @@
   width: 100%;
   color: white;
   font-size: 1.6rem;
+  padding-bottom: 1rem;
+  min-height: 52rem;
 }
 
 .content__container {
@@ -14,7 +16,7 @@
 }
 
 .content__container h1 {
-  font-size: 5.5rem;
+  font-size: 6rem;
   color: var(--main-orange);
 }
 
@@ -22,7 +24,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .top__text__container > img {
@@ -85,6 +87,7 @@
 
 .links__container {
   margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .links__list {
@@ -94,7 +97,7 @@
 }
 
 .links__container a {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
   border: none;
   border-radius: 1rem;
@@ -111,7 +114,7 @@
 }
 
 .links__container a:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
 }
 
@@ -121,4 +124,44 @@
 
 .links__container a:hover .arrow__icon {
   transform: translateX(4px);
+}
+
+@keyframes linkAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.label {
+  opacity: 0;
+  animation: linkAppear 0.3s ease forwards;
+}
+
+.link__item {
+  opacity: 0;
+  animation: linkAppear 0.3s ease forwards;
+}
+
+@media (max-width: 768px) {
+  .buttons__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .content__container h1 {
+    font-size: 4rem;
+  }
+
+  .top__text__container > img {
+    display: none;
+  }
+
+  .links__container a {
+    padding: 0.85rem;
+  }
 }
