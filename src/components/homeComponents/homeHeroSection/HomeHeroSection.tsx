@@ -31,7 +31,7 @@ function HomeHeroSection() {
   const [selectedRole, setSelectedRole] = useState("Student");
 
   return (
-    <div className={styles.main__container}>
+    <section className={styles.main__container}>
       <div className={styles.content__container}>
         <div className={styles.top__text__container}>
           <h1>Empower Your</h1>
@@ -65,7 +65,7 @@ function HomeHeroSection() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
